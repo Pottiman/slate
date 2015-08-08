@@ -98,10 +98,22 @@ input[type=date] {
   position: relative;
   padding: 10px;
   display: block;
-  overflow: hidden; }
+  overflow: hidden;
+  transition: all 0.25s; }
 
-.item:not(:first-child) {
+.item:not(.item-hidden):not(:first-child) {
   border-top: 1px solid #DEDEDE; }
+
+.item-hidden {
+  border: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  max-height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.25s; }
 
 .item-subtitle-wrapper {
   font-size: 1em; }

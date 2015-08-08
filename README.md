@@ -111,6 +111,33 @@ Here is a list of the different components you can create with Slate.
 </div>
 ```
 
+### Hidable Items
+
+![hidable items](https://raw.githubusercontent.com/Pottiman/slate/master/docs/assets/slate-hidable.gif)
+
+```html
+<div class="item-container">
+  <div class="item-container-header">Hidable Items</div>
+  <div class="item-container-content">
+    <label class="item">
+      Example Item
+    </label>
+    <label class="item" id="hide-test">
+      Example Item
+    </label>
+    <label class="item">
+      Example Item
+    </label>
+  </div>
+  <div class="button-container">
+    <input type="button" class="item-button" value="Show" style="margin-top: 5px;"
+             onclick="$('#hide-test').removeClass('item-hidden');">
+    <input type="button" class="item-button" value="Hide" style="margin-top: 5px;"
+             onclick="$('#hide-test').addClass('item-hidden');">
+  </div>
+</div>
+```
+
 ### Checkboxes
 
 ![checkboxes](https://raw.githubusercontent.com/pebble/slate/master/docs/assets/slate-checkbox.png)
@@ -255,7 +282,7 @@ Here is a list of the different components you can create with Slate.
 
 ### Markers and Progressbars
 
-![markers and progressbars](./assets/slate-status.gif)
+![markers and progressbars](https://raw.githubusercontent.com/Pottiman/slate/master/docs/assets/slate-status.gif)
 
 ```html
 <div class="item-container">
@@ -277,7 +304,7 @@ Here is a list of the different components you can create with Slate.
 
 ### Draggable Lists
 
-![draggable list](https://raw.githubusercontent.com/pebble/slate/master/docs/assets/slate-status.gif)
+![draggable list](https://raw.githubusercontent.com/pebble/slate/master/docs/assets/slate-draggable.png)
 
 ```html
 <div class="item-container">
