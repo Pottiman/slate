@@ -253,6 +253,28 @@ Here is a list of the different components you can create with Slate.
 </div>
 ```
 
+### Markers and Progressbars
+
+![markers and progressbars](./assets/slate-status.gif)
+
+```html
+<div class="item-container">
+  <div class="item-container-header">Progressbar and Marker</div>
+  <div class="item-container-content">
+    <label class="item item-failed">
+      Process 1
+    </label>
+    <label class="item item-progress"  data-min="0" data-max="100" data-value="42.1" id="progress-test">
+      Process 2
+    </label>
+  </div>
+  <div class="button-container">
+    <input type="button" class="item-button" value="Done" style="margin-top: 5px;"
+              onclick="$('#progress-test').removeClass('item-progress').addClass('item-done');">
+  </div>
+</div>
+```
+
 ### Draggable Lists
 
 ![draggable list](https://raw.githubusercontent.com/pebble/slate/master/docs/assets/slate-draggable.png)

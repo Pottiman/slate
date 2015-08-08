@@ -23,12 +23,12 @@ $lighter-gray:      #F7F7F7;
 $white:             #FFFFFF;
 $border-radius:     5px;
 
-@mixin transform($deg) {
-  -webkit-transform: rotate($deg);
-     -moz-transform: rotate($deg);
-      -ms-transform: rotate($deg);
-       -o-transform: rotate($deg);
-          transform: rotate($deg);
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+     -moz-transform: $transforms;
+      -ms-transform: $transforms;
+       -o-transform: $transforms;
+          transform: $transforms;
 }
 
 @mixin user-select($type) {
@@ -43,6 +43,28 @@ $border-radius:     5px;
      -moz-appearance: $type;
       -ms-appearance: $type;
           appearance: $type;
+}
+
+@mixin animation($animations...) {
+  -webkit-animation: $animations;
+     -moz-animation: $animations;
+       -o-animation: $animations;
+          animation: $animations;
+}
+
+@mixin keyframes($kname) {
+  @-webkit-keyframes #{$kname} {
+    @content;
+  }
+  @-moz-keyframes #{$kname} {
+    @content;
+  }
+  @-ms-keyframes #{$kname} {
+    @content;
+  }
+  @keyframes #{$kname} {
+    @content;
+  }
 }
 
 * {
@@ -264,7 +286,7 @@ input[type=date] {
   border-color: $lighter-gray;
   border-width: 0 2px 2px 0;
   border-style: solid;
-  @include transform(45deg);
+  @include transform(rotate(45deg));
 }
 
 .item-styled-radio {
@@ -302,7 +324,7 @@ input[type=date] {
   border-color: $lighter-gray;
   border-width: 0 2px 2px 0;
   border-style: solid;
-  @include transform(45deg);
+  @include transform(rotate(45deg));
 }
 
 .item-color {
@@ -544,12 +566,12 @@ input[type=date] {
 }
 
 .delete-item:before{
-  @include transform(45deg);
+  @include transform(rotate(45deg));
   left: 3px;
 }
 
 .delete-item:after{
-  @include transform(-45deg);
+  @include transform(rotate(-45deg));
   right: 3px;
 }
 
@@ -579,3 +601,68 @@ input[type=date] {
   border-radius: 2px;
 }
 
+:not(.item-progress) > .item-progress-bar{
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+
+.item-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: $orange;
+}
+
+.item-progress-content {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.item-marker-base {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+
+  height: 24px;
+  width: 24px;
+  border-radius: 24px;
+
+  font-size: 17px;
+  color: white;
+  text-align: center;
+}
+
+.item-failed:after {
+  @extend .item-marker-base;
+  
+  content: "\2717";
+  background: #cc0000;
+  @include animation(item-marker 0.5s);
+}
+
+.item-done:after {
+  @extend .item-marker-base;
+  
+  content: "\2713";
+  background: #00aa00;
+  @include animation(item-marker 0.5s);
+}
+
+@include keyframes(item-marker) {
+  from{
+    opacity: 0;
+    @include transform(scale(0.5));
+  }
+  80%{
+    @include transform(scale(1.5));
+  }
+  to{
+    opacity: 1;
+    @include transform(scale(1.0));
+  }
+}

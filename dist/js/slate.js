@@ -326,6 +326,37 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
           }
         });
       });
+    },
+    
+    itemProgress: function () {
+      this.each(function() {
+        var $parent = $(this);
+        
+        var $progressbar = $('<div class="item-progress-bar"></div>', { css: { width: "0%" } });
+        var $content = $('<div class="item-progress-content"></div>');
+        //Wrap content in relative element to prevent absolute bar obscuring it
+        $content.html($parent.html());
+        $parent.html($progressbar);
+        $parent.append($content);
+      });
+      
+      setInterval(function() {
+        $('.item-progress').each(function(){
+          var $parent = $(this);
+          var min = parseFloat($parent.attr("data-min")) || 0.0;
+          var max = parseFloat($parent.attr("data-max")) || 100.0;
+          var value = parseFloat($parent.attr("data-value")) || 0.0;
+          var progress = ((value - min) / (max - min));
+          var width = (progress * 100) + "%";
+          
+          var $bar = $parent.children(".item-progress-bar");
+          //Prevent redraw on every tick
+          if($bar.css("width") !== width){
+            $bar.css("width", width);
+          }
+        });
+      }, 16);
+      
     }
   });
 
@@ -342,5 +373,6 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
     $('.item-slider').itemSlider();
     $('.item-draggable-list').itemDraggableList();
     $('.item-dynamic-list').itemDynamicList();
+    $('.item-progress').itemProgress();
   });
 }(Zepto, Sortable));
