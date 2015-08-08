@@ -277,7 +277,7 @@ Here is a list of the different components you can create with Slate.
 
 ### Draggable Lists
 
-![draggable list](https://raw.githubusercontent.com/pebble/slate/master/docs/assets/slate-draggable.png)
+![draggable list](https://raw.githubusercontent.com/pebble/slate/master/docs/assets/slate-status.gif)
 
 ```html
 <div class="item-container">
