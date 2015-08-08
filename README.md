@@ -255,7 +255,7 @@ Here is a list of the different components you can create with Slate.
 
 ### Markers and Progressbars
 
-![markers and progressbars](https://raw.githubusercontent.com/Pottiman/slate/master/docs/assets/slate-slider.png)
+![markers and progressbars](./assets/slate-status.gif)
 
 ```html
 <div class="item-container">
